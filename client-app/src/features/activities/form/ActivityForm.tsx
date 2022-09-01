@@ -35,22 +35,22 @@ export default function ActivityForm({activity : selectedActivity, closeForm, cr
         <Segment clearing>
             <Form onSubmit={handleSubmit} autocomplete='off'>
                 <Form.Input placeholder='Title' value={activity.title} name='title' 
-                onChange={handleInputChange} 
+                onChange={handleInputChange}
                 />
-                <Form.TextArea placeholder='Description' value={activity.title} name='description'  
-                onChange={handleInputChange} 
+                <Form.TextArea placeholder='Description' value={activity.description} name='description'  
+                onChange={handleInputChange}
                 />
                 <Form.Input placeholder='Category' value={activity.category} name='category'  
-                onChange={handleInputChange} 
+                onChange={handleInputChange}
                 />
-                <Form.Input placeholder='Date' value={activity.date} name='date' 
-                onChange={handleInputChange} 
+                <Form.Input type="date" placeholder='Date' value={activity.date} name='date' 
+                onChange={handleInputChange}
                 />
                 <Form.Input placeholder='City' value={activity.city} name='city' 
-                onChange={handleInputChange} 
+                onChange={handleInputChange}
                 />
                 <Form.Input placeholder='Venue' value={activity.venue} name='venue' 
-                onChange={handleInputChange} 
+                onChange={handleInputChange}
                 />
                 <Button floated='right' positive type='submit' content='Submit' />
                 <Button onClick={closeForm} floated='right' type='button' content='Cancel' />
