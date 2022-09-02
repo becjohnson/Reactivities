@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from 'axios';
+import axios, { Axios, AxiosResponse } from 'axios';
 import { Activity } from '../models/activity';
 
 const sleep = (delay: number) => {
@@ -19,6 +19,8 @@ axios.interceptors.response.use(async response => {
     }
 })
 
+axios.get("https://api.url.com", {headers: {'Content-Type': 'application/json'} });
+
 const responseBody = <T> (response: AxiosResponse<T>) => response.data;
 
 const requests = {
@@ -29,7 +31,11 @@ const requests = {
 }
 
 const Activities = {
-    list: () => requests.get<Activity[]>('/Activities')
+    list: () => requests.get<Activity[]>('/Activities'),
+    details: (id: string) => axios.get<Activity>(`/Activities/${id}`),
+    create: (activity: Activity) => requests.post<void>('/Activities', activity),
+    update: (activity: Activity) => axios.put<void>(`/Activities/${activity.id}`, activity),
+    delete: (id: string) => axios.delete<void>(`/activities/${id}`)
 }
 
 const agent = {
